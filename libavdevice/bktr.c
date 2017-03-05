@@ -129,7 +129,7 @@ static av_cold int bktr_init(const char *video_device, int width, int height,
     {
         arg = getenv ("BKTR_FREQUENCY");
         if (arg)
-            frequency = atof (arg);
+            frequency = strtod (arg, NULL);
         if (frequency <= 0)
             frequency = 0.0;
     }

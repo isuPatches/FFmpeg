@@ -82,8 +82,8 @@ static double get_duration(AVFormatContext *s)
     for (i = 0; i < s->nb_streams; i++) {
         AVDictionaryEntry *duration = av_dict_get(s->streams[i]->metadata,
                                                   DURATION, NULL, 0);
-        if (!duration || atof(duration->value) < 0) continue;
-        if (atof(duration->value) > max) max = atof(duration->value);
+        if (!duration || strtod(duration->value, NULL) < 0) continue;
+        if (strtod(duration->value, NULL) > max) max = strtod(duration->value, NULL);
     }
     return max / 1000;
 }

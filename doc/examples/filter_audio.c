@@ -282,7 +282,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    duration  = atof(argv[1]);
+    duration  = strtod(argv[1], NULL);
     nb_frames = duration * INPUT_SAMPLERATE / FRAME_SIZE;
     if (nb_frames <= 0) {
         fprintf(stderr, "Invalid duration: %s\n", argv[1]);

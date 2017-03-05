@@ -451,7 +451,7 @@ static int parse_playlist(AVFormatContext *s, const char *url)
             hls->sequence = atoi(ptr);
         } else if (av_strstart(line, "#EXTINF:", &ptr)) {
             is_segment = 1;
-            hls->duration = atof(ptr);
+            hls->duration = strtod(ptr, NULL);
         } else if (av_strstart(line, "#", NULL)) {
             continue;
         } else if (line[0]) {

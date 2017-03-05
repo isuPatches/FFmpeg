@@ -428,7 +428,7 @@ int main(int argc, char **argv)
             fft_nbits = atoi(optarg);
             break;
         case 'f':
-            scale = atof(optarg);
+            scale = strtod(optarg, NULL);
             break;
         case 'c':
         {

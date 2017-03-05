@@ -911,7 +911,7 @@ static int ffserver_parse_config_stream(FFServerConfig *config, const char *cmd,
             goto nomem;
     } else if (!av_strcasecmp(cmd, "Preroll")) {
         ffserver_get_arg(arg, sizeof(arg), p);
-        stream->prebuffer = atof(arg) * 1000;
+        stream->prebuffer = strtod(arg, NULL) * 1000;
     } else if (!av_strcasecmp(cmd, "StartSendOnKey")) {
         stream->send_on_key = 1;
     } else if (!av_strcasecmp(cmd, "AudioCodec")) {
@@ -922,7 +922,7 @@ static int ffserver_parse_config_stream(FFServerConfig *config, const char *cmd,
         ffserver_set_codec(config->dummy_vctx, arg, config);
     } else if (!av_strcasecmp(cmd, "MaxTime")) {
         ffserver_get_arg(arg, sizeof(arg), p);
-        stream->max_time = atof(arg) * 1000;
+        stream->max_time = strtod(arg, NULL) * 1000;
     } else if (!av_strcasecmp(cmd, "AudioBitRate")) {
         float f;
         ffserver_get_arg(arg, sizeof(arg), p);
